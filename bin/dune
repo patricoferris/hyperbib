@@ -1,0 +1,4 @@
+(executable
+ (name cmd_main)
+ (public_name hyperbib)
+ (libraries hyperbib))

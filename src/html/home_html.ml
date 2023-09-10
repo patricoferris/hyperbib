@@ -35,11 +35,10 @@ let page_html g =
     ];
     El.p [
       El.txt
-        "The aim of this annotated bibliography is to provide a critical survey of the main relevant philosophical and scientific references dealing with foundational, epistemic and methodological issues related to climate science, climate modelling and climate change."
+        "This is a personal bibliograph of papers related to computer systems, programming languages and climate change curated by Patrick Ferris.";
     ];
-    El.p [ El.txt
-             "The focus is on a qualitative survey of these issues in a philosophy of science perspective rather than on an exhaustive review of the literature. In a second stage, focused critical notes will be progressively attached to prominent entries."
-         ];
+    El.p [ El.txt "It uses the excellent "; El.a ~at:[ At.href "https://github.com/dbuenzli/hyperbib" ] [ El.txt "Hyperbib" ];
+           El.txt ", but slightly rebranded and using a "; El.a ~at:[ At.href "https://github.com/patricoferris/hyperbib/tree/dune" ] [ El.txt "port to dune" ]; El.txt "."];
     El.p [
       El.txt "The bibliography is compiled by collaborators of the ";
       link_project;

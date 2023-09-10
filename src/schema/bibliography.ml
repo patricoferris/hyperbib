@@ -21,16 +21,14 @@ let favicon_href g = g.favicon_href
 let suggester_email_message g = g.suggester_email_message
 
 let get () =
-Ok { copyrights = "© University of Bern";
-     project_title = "Epistemology of Climate Change";
-     project_short_title = "philoclimate.ch";
-     project_href = "https://philoclimate.ch";
+Ok { copyrights = "© University of Cambridge";
+     project_title = "Systems, PL and Climate Change";
+     project_short_title = "bib.sirref.org";
+     project_href = "https://bib.sirref.org";
      favicon_href = None;
      suggester_email_message =
-       "Your suggestion has been integrated in the philoclimate.ch \
-        bibliography.\n Thank you!\n\n\
-        ---\n\
-        The collaborators of the Epistemology of Climate Change project" }
+       "Your suggestion has been integrated into bib.sirref.org \
+        bibliography.\n Thank you!\n\n" }
 
 (* XXX think a bit abour Kurl and the bibtex file case. Do we always
    have enough context in dec ? Do we want to tuck a user defined param

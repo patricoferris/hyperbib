@@ -23,7 +23,7 @@ let main () =
   Log.time (fun _ m -> m "total time hyperbib %s" Stamp.version) @@ fun () ->
   Cmd.eval_value hyperbib
 
-let () = if !Sys.interactive then () else main ()
+let () = main ()
 
 (*---------------------------------------------------------------------------
    Copyright (c) 2019 University of Bern

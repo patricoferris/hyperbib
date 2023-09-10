@@ -1,5 +1,6 @@
 (library
  (name hyperbib)
+ (public_name hyperbib)
  (wrapped false)
  (flags (-w -27-32-33))
  (libraries

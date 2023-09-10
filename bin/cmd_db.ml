@@ -31,7 +31,7 @@ let do_changes (col_renames, table_renames) db =
   Log.app (fun m -> m "Changing live database schema…");
   Result.join @@ Db.string_error @@
   Db.with_transaction `Immediate db @@ fun db ->
-  let* (live, issues) = Db.schema db |> Db.string_error in
+  let* (live, _) = Db.schema db |> Db.string_error in
   let src = live and dst = Schema.v in
   let* cs = Rel.Schema.changes ~col_renames ~table_renames ~src ~dst () in
   let stmts = Rel_sql.schema_changes Rel_sqlite3.dialect cs in
@@ -174,7 +174,7 @@ let changes_cmd =
     Term.(const changes $ Hyperbib.Cli.conf $ Rel_cli.renames () $ format $
           exec $ no_backup)
 
-let reset_cmd =
+let _reset_cmd =
   let doc = "Reset the database" in
   let man = [
     `S Manpage.s_description;
