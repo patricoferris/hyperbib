@@ -3,8 +3,6 @@
    Distributed under the ISC license, see terms at the end of the file.
   ---------------------------------------------------------------------------*)
 
-open Hyperbib.Std
-
 type day = int
 type month = int
 type year = int

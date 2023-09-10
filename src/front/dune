@@ -1,0 +1,7 @@
+(executable
+ (name hyperbib_front)
+ (flags (-w -27-32-33))
+ (modes js)
+ (libraries brr note.brr htmlact.page))
+
+(include_subdirs no)

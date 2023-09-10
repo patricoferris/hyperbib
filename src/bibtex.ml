@@ -94,8 +94,6 @@ let err_eoi msg d ~sbyte ~sline =
 let err_eoi_entry = err_eoi "unclosed BibTeX entry"
 let err_eoi_field = err_eoi "unfinished BibTeX entry field"
 let err_eoi_value = err_eoi "unfinished BibTeX field value"
-let err_brace d ~sbyte ~sline =
-  Tdec.err_to_here d ~sbyte ~sline "incorrect brace {} nesting"
 
 let dec_byte d = match Tdec.byte d with
 | c when 0x00 <= c && c <= 0x08 || 0x0E <= c && c <= 0x1F || c = 0x7F ->
@@ -166,7 +164,7 @@ let rec dec_fields ~sbyte ~sline d acc =
       | 0x002C (* , *) -> Tdec.accept_byte d; dec_fields ~sbyte ~sline d acc
       | 0x007D (* } *) -> acc
       | 0xFFFF -> err_eoi_entry ~sbyte ~sline d
-      | b -> err_expected d "',' or '}'"
+      | _ -> err_expected d "',' or '}'"
 
 let dec_entry d =
   let sbyte = Tdec.pos d and sline = Tdec.line d in
@@ -194,7 +192,7 @@ let dec_entries d =
     match dec_byte d with
     | 0x0040 (* @ *) -> loop d (dec_entry d :: acc)
     | 0xFFFF -> List.rev acc
-    | b -> err_illegal_uchar d
+    | _ -> err_illegal_uchar d
   in
   loop d []
 

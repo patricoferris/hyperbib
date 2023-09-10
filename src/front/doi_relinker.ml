@@ -76,7 +76,7 @@ let relink_dois () =
 
 let doi_relinking doi_resolver span =
   let set_resolver r = set_doi_resolver (Jstr.to_string r) in
-  let editing, edited = string_editor doi_resolver span in
+  let _editing, edited = string_editor doi_resolver span in
   let () = Logr.may_hold (E.log edited set_resolver) in
   ()
 

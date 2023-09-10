@@ -92,7 +92,7 @@ let with_transaction k db f = Rel_sqlite3.with_transaction k db f
 
 (* Schema handling *)
 
-let setup db ~schema:s =
+let _setup db ~schema:s =
   Result.join @@ Rel_sqlite3.with_transaction `Immediate db @@ fun db ->
   let stmts = Rel_sql.create_schema dialect s in
   List.iter_stop_on_error (Rel_sqlite3.exec db) stmts

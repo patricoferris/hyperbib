@@ -1,0 +1,41 @@
+(library
+ (name hyperbib)
+ (wrapped false)
+ (flags (-w -27-32-33))
+ (libraries
+  b0.std
+  b0.tool
+  bos
+  fmt
+  rel
+  rel.kit
+  rel.sqlite3
+  rel.pool
+  rel.cli
+  webs
+  webs.kit
+  webs.cli
+  htmlit
+  htmlact
+  ptime
+  ptime.clock.os))
+
+(include_subdirs unqualified)
+
+; Static files
+(subdir app
+ (subdir static
+  (rule
+   (deps
+     %{project_root}/src/front/hyperbib_front.bc.js
+     %{project_root}/src/front/hyperbib.css)
+   (targets hyperbib.js hyperbib.css)
+   (action
+    (progn
+     (copy %{project_root}/src/front/hyperbib_front.bc.js hyperbib.js)
+     (copy %{project_root}/src/front/hyperbib.css hyperbib.css))))
+))
+
+(rule
+ (targets stamp.ml)
+ (action (with-stdout-to stamp.ml (run echo "let version = \"TODO\" let static_files = \"TODO\""))))
