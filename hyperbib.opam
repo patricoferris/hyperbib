@@ -35,5 +35,5 @@ pin-depends: [
   ["b0.~dev" "git+https://erratique.ch/repos/b0.git#master"]
   ["htmlact.~dev" "git+https://erratique.ch/repos/htmlact.git#master"]
   ["rel.~dev" "git+https://erratique.ch/repos/rel.git#master"]
-  ["webs.~dev" "git+https://erratique.ch/repos/webs.git#master"]
+  ["webs.~dev" "git+https://github.com/patricoferris/webs.git#2c9f637ff22feba92b334cd761be6f3725f0a408"]
 ]
