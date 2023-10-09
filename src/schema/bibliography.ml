@@ -22,12 +22,12 @@ let suggester_email_message g = g.suggester_email_message
 
 let get () =
 Ok { copyrights = "© University of Cambridge";
-     project_title = "Systems, PL and Climate Change";
-     project_short_title = "bib.sirref.org";
-     project_href = "https://bib.sirref.org";
+     project_title = "Energy and Environment Group";
+     project_short_title = "eeg.cl.cam.ac.uk";
+     project_href = "https://eeg.cl.cam.ac.uk";
      favicon_href = None;
      suggester_email_message =
-       "Your suggestion has been integrated into bib.sirref.org \
+       "Your suggestion has been integrated into eeg.cl.cam.ac.uk \
         bibliography.\n Thank you!\n\n" }
 
 (* XXX think a bit abour Kurl and the bibtex file case. Do we always

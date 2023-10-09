@@ -35,10 +35,10 @@ let page_html g =
     ];
     El.p [
       El.txt
-        "This is a personal bibliograph of papers related to computer systems, programming languages and climate change curated by Patrick Ferris.";
+        "This is a bibliography of papers related to computer systems and the environment curated by the Energy and Environment Group, Department of Computer Science and Technology, Cambridge.";
     ];
-    El.p [ El.txt "It uses the excellent "; El.a ~at:[ At.href "https://github.com/dbuenzli/hyperbib" ] [ El.txt "Hyperbib" ];
-           El.txt ", but slightly rebranded and using a "; El.a ~at:[ At.href "https://github.com/patricoferris/hyperbib/tree/dune" ] [ El.txt "port to dune" ]; El.txt "."];
+    El.p [ El.txt "It uses "; El.a ~at:[ At.href "https://github.com/dbuenzli/hyperbib" ] [ El.txt "Hyperbib" ];
+           El.txt ", but rebranded and using a "; El.a ~at:[ At.href "https://github.com/patricoferris/hyperbib/tree/eeg" ] [ El.txt "port to dune" ]; El.txt "."];
     El.p [
       El.txt "The bibliography is compiled by collaborators of the ";
       link_project;
