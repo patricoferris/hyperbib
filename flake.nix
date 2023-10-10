@@ -16,9 +16,22 @@
         package = "hyperbib";
         pkgs = nixpkgs.legacyPackages.${system};
         on = opam-nix.lib.${system};
+        overlay = final: prev: {
+          # You can add overrides here
+          ${package} = prev.${package}.overrideAttrs (_: {
+            buildPhase = ''
+             dune build .
+            '';
+            installPhase = ''
+              mkdir -p $out/bin $out/static
+              cp -R _build/install/default/bin/* $out/bin
+              cp -R _build/default/src/app/static/* $out/static/
+            '';
+          });
+        };
         scope = on.buildOpamProject' { } ./. { ocaml-base-compiler = "*"; };
       in {
-        legacyPackages = scope;
+        legacyPackages = scope.overrideScope' overlay;
         packages.default = self.legacyPackages.${system}.${package};
       }
     ) // {
@@ -50,9 +63,9 @@
                 type = lib.types.string;
                 default = "/mybibliography";
               };
-              appAir = lib.mkOption {
+              appDir = lib.mkOption {
                 type = lib.types.string;
-                default = "/var/www/hyperbib";
+                default = "${self.packages.${config.nixpkgs.hostPlatform.system}.default}/static/";
               };
             };
           };
@@ -82,7 +95,7 @@
                   " serve" +
                   " --listen localhost:${builtins.toString cfg.port}" +
                   " --service-path ${cfg.servicePath}" +
-                  " --app-dir ${cfg.appAir}";
+                  " --app-dir ${cfg.appDir}";
                 Restart = "on-failure";
                 RestartSec = "10s";
                 User = cfg.user;
