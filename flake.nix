@@ -24,7 +24,7 @@
             '';
             installPhase = ''
               mkdir -p $out/bin $out/static
-              cp -R _build/install/default/bin/* $out/bin
+              cp -R _build/default/bin/cmd_main.exe $out/bin/hyperbib
               cp -R _build/default/src/app/static/* $out/static/
             '';
           });
