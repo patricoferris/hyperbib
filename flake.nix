@@ -18,14 +18,13 @@
         on = opam-nix.lib.${system};
         overlay = final: prev: {
           # You can add overrides here
-          ${package} = prev.${package}.overrideAttrs (_: {
+          "${package}-static" = prev.${package}.overrideAttrs (_: {
             buildPhase = ''
-             dune build .
+             dune build src/app/static
             '';
             installPhase = ''
-              mkdir -p $out/bin $out/static
-              cp -R _build/default/bin/cmd_main.exe $out/bin/hyperbib
-              cp -R _build/default/src/app/static/* $out/static/
+              mkdir $out
+              cp -R _build/default/src/app/static/* $out/
             '';
           });
         };
@@ -65,7 +64,7 @@
               };
               appDir = lib.mkOption {
                 type = lib.types.str;
-                default = "${self.packages.${config.nixpkgs.hostPlatform.system}.default}/static/";
+                default = "/var/www/hyperbib/";
               };
             };
           };
