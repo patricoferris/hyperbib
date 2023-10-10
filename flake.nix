@@ -60,11 +60,11 @@
                 default = cfg.user;
               };
               servicePath = lib.mkOption {
-                type = lib.types.string;
+                type = lib.types.str;
                 default = "/mybibliography";
               };
               appDir = lib.mkOption {
-                type = lib.types.string;
+                type = lib.types.str;
                 default = "${self.packages.${config.nixpkgs.hostPlatform.system}.default}/static/";
               };
             };
