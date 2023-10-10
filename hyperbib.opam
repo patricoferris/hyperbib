@@ -39,8 +39,8 @@ build: [
 ]
 dev-repo: "git+https://github.com/patricoferris/.git"
 pin-depends: [
-  ["b0.~dev" "git+https://erratique.ch/repos/b0.git#b8dd08c56209355dd7bb85d047cf08fd56ea68ec"]
-  ["htmlact.~dev" "git+https://erratique.ch/repos/htmlact.git#a206fe6578e0f5568c022b8f32d9368ac5a56b55"]
-  ["rel.~dev" "git+https://erratique.ch/repos/rel.git#004a5582fe88c2dead0ddaf7a6adbe8da5956bde"]
-  ["webs.~dev" "git+https://github.com/patricoferris/webs.git#2c9f637ff22feba92b334cd761be6f3725f0a408"]
+  ["b0.dev" "git+https://erratique.ch/repos/b0.git#b8dd08c56209355dd7bb85d047cf08fd56ea68ec"]
+  ["htmlact.dev" "git+https://erratique.ch/repos/htmlact.git#a206fe6578e0f5568c022b8f32d9368ac5a56b55"]
+  ["rel.dev" "git+https://erratique.ch/repos/rel.git#004a5582fe88c2dead0ddaf7a6adbe8da5956bde"]
+  ["webs.dev" "git+https://github.com/patricoferris/webs.git#2c9f637ff22feba92b334cd761be6f3725f0a408"]
 ]
