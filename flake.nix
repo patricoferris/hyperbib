@@ -2,7 +2,7 @@
   inputs = {
     opam-nix.url = "github:tweag/opam-nix";
     flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.follows = "opam-nix/nixpkgs";
+    opam-nix.inputs.nixpkgs.follows = "nixpkgs";
     # maintain a different opam-repository to those pinned upstream
     opam-repository = {
       url = "github:ocaml/opam-repository";
