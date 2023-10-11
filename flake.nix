@@ -73,11 +73,11 @@
               };
               proxyPath = lib.mkOption {
                 type = lib.types.str;
-                default = "/mybibliography/";
+                default = "/";
               };
               servicePath = lib.mkOption {
                 type = lib.types.str;
-                default = "/";
+                default = "/bib/";
               };
               appDir = lib.mkOption {
                 type = lib.types.str;
