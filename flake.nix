@@ -122,7 +122,7 @@
             environment.systemPackages = [ hyperbib ];
 
             environment.sessionVariables = {
-              HPYERBIB_APP_DIR = cfg.appDir;
+              HYPERBIB_APP_DIR = cfg.appDir;
               HYPERBIB_LISTEN = "localhost:${builtins.toString cfg.port}";
               HYPERBIB_SERVICE_PATH = cfg.servicePath;
               HYPERBIB_USER = cfg.user;
