@@ -16,6 +16,7 @@
         package = "hyperbib";
         pkgs = nixpkgs.legacyPackages.${system};
         on = opam-nix.lib.${system};
+        query = { ocaml-base-compiler = "*"; };
         overlay = final: prev: {
           # You can add overrides here
           "${package}-static" = prev.${package}.overrideAttrs (_: {
@@ -28,10 +29,22 @@
             '';
           });
         };
-        scope = on.buildOpamProject' { } ./. { ocaml-base-compiler = "*"; };
-      in {
-        legacyPackages = scope.overrideScope' overlay;
-        packages.default = self.legacyPackages.${system}.${package};
+        resolved-scope =
+          let scope = on.buildOpamProject' { } ./. query; in
+          scope.overrideScope' overlay;
+        materialized-scope =
+          let scope = on.materializedDefsToScope { sourceMap.${package} = ./.; } ./package-defs.json; in
+          scope.overrideScope' overlay;
+      in rec {
+        packages = {
+          resolved = resolved-scope;
+          materialized = materialized-scope;
+          # to generate:
+          #   cat $(nix eval .#package-defs --raw) > package-defs.json
+          package-defs = on.materializeOpamProject' { } ./. query;
+        };
+        defaultPackage = packages.materialized.${package};
+        packages.default = packages.materialized.${package};
       }
     ) // {
       nixosModules.default = ({ pkgs, config, lib, ... }:
