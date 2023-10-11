@@ -71,9 +71,13 @@
                 type = lib.types.str;
                 default = cfg.user;
               };
+              proxyPath = lib.mkOption {
+                type = lib.types.str;
+                default = "/mybibliography/";
+              };
               servicePath = lib.mkOption {
                 type = lib.types.str;
-                default = "/mybibliography";
+                default = "/";
               };
               appDir = lib.mkOption {
                 type = lib.types.str;
@@ -89,7 +93,7 @@
                 "${cfg.domain}" = {
                   forceSSL = true;
                   enableACME = true;
-                  locations."/" = {
+                  locations."${cfg.proxyPath}" = {
                     proxyPass = "http://127.0.0.1:${builtins.toString cfg.port}/";
                   };
                 };
