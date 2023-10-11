@@ -33,6 +33,7 @@
 (install
  (section share_root)
  (files    (front/hyperbib.css as static/hyperbib.css)
+           (glob_files (front/fonts/* with_prefix static/fonts))
            (hyperbib.js as static/hyperbib.js)))
 
 (rule
