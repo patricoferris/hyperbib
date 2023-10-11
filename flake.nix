@@ -72,7 +72,9 @@
             };
           };
 
-          config = mkIf cfg.enable {
+          config = let
+            hyperbib = self.packages.${config.nixpkgs.hostPlatform.system}.default;
+          in mkIf cfg.enable {
             services.nginx = {
               enable = true;
               virtualHosts = {
@@ -91,9 +93,10 @@
               description = "hyperbib";
               after = [ "network.target" ];
               wantedBy = [ "multi-user.target" ];
+              path = with pkgs; [ curl sqlite ];
               serviceConfig = {
                 ExecStart =
-                  "${self.packages.${config.nixpkgs.hostPlatform.system}.default}/bin/hyperbib" +
+                  "${hyperbib}/bin/hyperbib" +
                   " serve" +
                   " --listen localhost:${builtins.toString cfg.port}" +
                   " --service-path ${cfg.servicePath}" +
@@ -115,6 +118,8 @@
             };
 
             users.groups."${cfg.group}" = {};
+
+            environment.systemPackages = [ hyperbib ];
           };
         });
 
