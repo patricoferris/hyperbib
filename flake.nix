@@ -17,24 +17,10 @@
         pkgs = nixpkgs.legacyPackages.${system};
         on = opam-nix.lib.${system};
         query = { ocaml-base-compiler = "*"; };
-        overlay = final: prev: {
-          # You can add overrides here
-          "${package}-static" = prev.${package}.overrideAttrs (_: {
-            buildPhase = ''
-             dune build src/app/static
-            '';
-            installPhase = ''
-              mkdir $out
-              cp -R _build/default/src/app/static/* $out/
-            '';
-          });
-        };
         resolved-scope =
-          let scope = on.buildOpamProject' { } ./. query; in
-          scope.overrideScope' overlay;
+          on.buildOpamProject' { } ./. query;
         materialized-scope =
-          let scope = on.materializedDefsToScope { sourceMap.${package} = ./.; } ./package-defs.json; in
-          scope.overrideScope' overlay;
+          on.materializedDefsToScope { sourceMap.${package} = ./.; } ./package-defs.json;
       in rec {
         packages = {
           resolved = resolved-scope;

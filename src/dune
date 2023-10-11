@@ -23,19 +23,17 @@
 
 (include_subdirs unqualified)
 
-; Static files
-(subdir app
- (subdir static
-  (rule
-   (deps
-     %{project_root}/src/front/hyperbib_front.bc.js
-     %{project_root}/src/front/hyperbib.css)
-   (targets hyperbib.js hyperbib.css)
-   (action
-    (progn
-     (copy %{project_root}/src/front/hyperbib_front.bc.js hyperbib.js)
-     (copy %{project_root}/src/front/hyperbib.css hyperbib.css))))
-))
+(rule
+ (deps
+   %{project_root}/src/front/hyperbib_front.bc.js)
+ (targets hyperbib.js)
+ (action
+   (copy %{project_root}/src/front/hyperbib_front.bc.js hyperbib.js)))
+
+(install
+ (section share_root)
+ (files    (front/hyperbib.css as static/hyperbib.css)
+           (hyperbib.js as static/hyperbib.js)))
 
 (rule
  (targets stamp.ml)
