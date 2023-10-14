@@ -23,8 +23,8 @@ let suggester_email_message g = g.suggester_email_message
 let get () =
 Ok { copyrights = "© University of Cambridge";
      project_title = "Energy and Environment Group";
-     project_short_title = "eeg.cl.cam.ac.uk";
-     project_href = "https://eeg.cl.cam.ac.uk";
+     project_short_title = "eeg.cl.cam.ac.uk/bib/";
+     project_href = "https://eeg.cl.cam.ac.uk/bib/";
      favicon_href = None;
      suggester_email_message =
        "Your suggestion has been integrated into eeg.cl.cam.ac.uk \
